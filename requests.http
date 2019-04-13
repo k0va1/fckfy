@@ -1,0 +1,26 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+POST http://localhost:4000/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation { signinUser(email: \"al3xander.koval@gmail.com\"\n password: \"123123123\") { token user { id } } }"
+}
+
+###
+POST http://localhost:4000/tracks/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="track.mp3"
+
+< ./spec/fixtures/track.mp3
+--WebAppBoundary--
+
+###
+
